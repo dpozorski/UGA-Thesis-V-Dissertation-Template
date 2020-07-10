@@ -1,0 +1,144 @@
+% arara: pdflatex
+% arara: biber
+% arara: pdflatex
+% arara: pdflatex
+
+% Document Boolean Metafiles (Do Not Reorder!) ============================== %
+\input{metafiles/booleans.tex}
+
+% Document Print Options =============================================== %
+% \printversiontrue
+\printversionfalse % Changes the margin for binder punches
+\doublesidedtrue % Alternates margin print margin.
+% \doublesidedfalse
+
+\ifdoublesided
+    \documentclass[12pt, notitlepage, twoside]{report}
+\else
+    \documentclass[12pt, notitlepage, oneside]{report}
+\fi
+
+% Document Preamble Metafiles (Do Not Reorder!) ============================== %
+\input{metafiles/preamble.tex}
+
+% Document Structure Metafile (Do Not Reorder!) ============================== %
+\input{metafiles/structure.tex}
+
+% Document Structure Options =============================================== %
+\figurestrue
+% \figuresfalse
+\tablestrue
+% \tablesfalse
+
+\begin{document}
+
+% Title and Author Settings ================================================ %
+\newcommand{\doctitle}{Your Dissertation Title Will Go Here}
+\newcommand{\docauthor}{Your Name Goes Here}
+
+
+%--------------------------ABSTRACT---------------------------%
+\input{metafiles/abstractpage.tex}
+\makeabstract{%
+This section of the page is where your abstract will go. Fill in this spot in the dissertation.tex file with your abstract. Doctoral 350 words max, 150 max for masters.
+}%
+
+
+%--------------------------TITLE PAGE---------------------------%
+\input{metafiles/titlepage.tex}
+\newcommand{\degreesearned}{%
+B.S., University of Georgia, 2018\\
+  Enter only degrees already completed. Follow example above\\
+  If degree was obtained outside of the US, the country \\
+  of the school and date obtained will need to be provided.
+}%
+
+\newcommand{\degreetype}{[Dissertation or Thesis]}
+\newcommand{\degreetitle}{[Doctor or Master]}
+\newcommand{\degreename}{[Degree Name]}
+\newcommand{\degreeyear}{YYYY}
+\maketitlepage
+
+
+%--------------------------COPYRIGHT---------------------------%
+\input{metafiles/copyright.tex}
+\makecopyright{YYYY}
+
+
+%--------------------------APPROVAL---------------------------%
+\newpage
+\thispagestyle{empty}
+\vspace*{18pt}
+\begin{center}
+  \MakeUppercase{\doctitle}\\[36pt]
+  by\\[36pt]
+  \MakeUppercase{\docauthor}
+\end{center}
+\vfill
+
+\begin{flushright}
+  \begin{tabular}{ll}
+    Major Professor: & FIRST LAST 1 \\ [24pt]
+    Committee: & FIRST LAST 2 \\
+    & FIRST LAST 3 \\
+  \end{tabular}
+\end{flushright}
+
+\vspace*{3cm}
+
+\begin{flushleft}
+  Electronic Version Approved:\\[12pt]
+  Ron Walcott\\
+  Interim Dean of the Graduate School\\
+  The University of Georgia\\
+  MONTH YEAR
+\end{flushleft}
+\vspace*{1.5cm}
+
+% Dedication ============================================================== %
+\subfile{subfiles/dedication}
+
+% Acknowledgements ======================================================== %
+\subfile{subfiles/acknowledgements}
+
+% Table of Contents ======================================================= %
+\setcounter{tocdepth}{1}
+\phantomsection
+\renewcommand{\contentsname}{\MakeUppercase{Table of Contents}}
+\tableofcontents
+
+\iffigures
+\newpage
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+\fi
+
+\iftables
+\newpage
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+\fi
+
+\clearpage
+\pagenumbering{arabic}
+
+% Document Body =========================================================== %
+% ------------------------------------------------------------------------- %
+\subfile{subfiles/chapter1}
+\subfile{subfiles/chapter2}
+\subfile{subfiles/chapter3}
+\subfile{subfiles/chapter4}
+\subfile{subfiles/conclusion}
+% ------------------------------------------------------------------------- %
+% ========================================================================= %
+
+
+%-----------------------APPENDICES----------------------------%
+\subfile{subfiles/appendices}
+
+%-----------------------BIBLIOGRAPHY---------------------------%
+\newpage
+\addcontentsline{toc}{chapter}{Bibliography} %add bib to the TOC
+\printbibliography[title={Bibliography}]
+
+\end{document}
