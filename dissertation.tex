@@ -39,18 +39,18 @@
 
 %--------------------------ABSTRACT---------------------------%
 \input{metafiles/abstractpage.tex}
-\makeabstract{%
+\doublespacing{\makeabstract{%
 This section of the page is where your abstract will go. Fill in this spot in the dissertation.tex file with your abstract. Doctoral 350 words max, 150 max for masters.
-}%
+}}%
 
 
 %--------------------------TITLE PAGE---------------------------%
 \input{metafiles/titlepage.tex}
 \newcommand{\degreesearned}{%
-B.S., University of Georgia, 2018\\
+\singlespacing{B.S., University of Georgia, 2018\\
   Enter only degrees already completed. Follow example above\\
   If degree was obtained outside of the US, the country \\
-  of the school and date obtained will need to be provided.
+  of the school and date obtained will need to be provided.}
 }%
 
 \newcommand{\degreetype}{[Dissertation or Thesis]}
@@ -76,7 +76,7 @@ B.S., University of Georgia, 2018\\
 \end{center}
 \vfill
 
-\begin{flushright}
+\singlespacing\begin{flushright}
   \begin{tabular}{ll}
     Major Professor: & FIRST LAST 1 \\ [24pt]
     Committee: & FIRST LAST 2 \\
